@@ -57,3 +57,12 @@ def get_gid(filename:str):
 def get_device(filename:str):
     stats = os.stat(filename)
     return stats.st_dev
+
+def is_file(filename:str):
+    return os.path.isfile(filename)
+
+def is_dir(filename:str):
+    return os.path.isdir(filename)
+
+def is_link(filename:str):
+    return os.path.islink(filename)

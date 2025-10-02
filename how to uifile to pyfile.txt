@@ -1,0 +1,1 @@
+"C:\Users\keits\AppData\Local\Programs\Python\Python313\Scripts\pyuic5.exe" -o file.py file.ui
