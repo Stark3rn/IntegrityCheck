@@ -4,14 +4,17 @@ A project searching to analyse local files on a computer and check its integrity
 ## Prerequisites
 To use this project, the following libraries are required:
 ### Linux systems
-> pip install pyssdeep six python-magic PyQt5 yara-python
-
+```bash
+pip install pyssdeep six python-magic PyQt5 yara-python
+```
 ### Windows systems
-> pip install pyssdeep six python-magic-bin PyQt5 yara-python
+```bash
+pip install pyssdeep six python-magic-bin PyQt5 yara-python
+```
 ----
 ## Installation
 1. Clone the repo
-```
+```bash
 git clone https://github.com/Stark3rn/IntegrityCheck.git
 cd IntegrityCheck
 ```
