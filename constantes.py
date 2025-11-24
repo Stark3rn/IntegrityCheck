@@ -5,79 +5,78 @@ purple_theme = """
  * Thème Sombre et Moderne avec accents Violets pour PyQt/QSS
  */
 
-/* Style général de la fenêtre */
+/* ===================== Fenêtre principale ===================== */
 QMainWindow {
-    background-color: #2b2b2b; /* Gris très foncé pour le fond principal */
-    color: #e0e0e0; /* Texte clair pour un bon contraste */
+    background-color: #2b2b2b;
+    color: #e0e0e0;
     font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
     font-size: 14px;
 }
 
-/* Style des labels */
+/* ===================== Labels ===================== */
 QLabel {
-    color: #cccccc; /* Gris clair pour les labels */
+    color: #cccccc;
     padding: 5px;
 }
 
-/* Labels de titre ou importants (comme "Drag & Drop file", "OR", "No File Uploaded") */
 QLabel#upload_center_label,
 QLabel#or_label,
 QLabel#filepath_label {
     font-weight: bold;
-    color: #bb86fc; /* Violet vif pour les accents et titres */
+    color: #bb86fc;
 }
 
-/* Style des boutons */
+/* ===================== Boutons ===================== */
 QPushButton {
-    background-color: #424242; /* Gris foncé pour le fond du bouton */
-    color: #e0e0e0; /* Texte clair sur les boutons */
-    border: 1px solid #555555; /* Bordure subtile */
+    background-color: #424242;
+    color: #e0e0e0;
+    border: 1px solid #555555;
     padding: 10px 20px;
     border-radius: 5px;
     font-weight: bold;
     min-width: 80px;
-    outline: none; /* Supprime le contour de focus par défaut */
+    outline: none;
 }
 
 QPushButton:hover {
-    background-color: #4a4a4a; /* Gris légèrement plus clair au survol */
-    border: 1px solid #bb86fc; /* Bordure violette au survol */
-    color: #bb86fc; /* Texte violet au survol */
+    background-color: #4a4a4a;
+    border: 1px solid #bb86fc;
+    color: #bb86fc;
 }
 
 QPushButton:pressed {
-    background-color: #383838; /* Gris plus foncé au clic pour un effet "enfoncé" */
-    border: 1px solid #9c27b0; /* Violet plus foncé au clic */
+    background-color: #383838;
+    border: 1px solid #9c27b0;
 }
 
 QPushButton:disabled {
-    background-color: #333333; /* Gris très foncé pour les boutons désactivés */
-    color: #777777; /* Texte gris estompé */
+    background-color: #333333;
+    color: #777777;
     border: 1px solid #444444;
 }
 
-/* Ligne séparatrice */
-QFrame[qproperty-frameShape="4"] { /* 4 correspond à HLine */
-    border-top: 1px solid #444444; /* Ligne fine gris foncé */
-    margin: 20px 0; /* Plus de marge verticale pour l'espace */
+/* ===================== Lignes séparatrices ===================== */
+QFrame[qproperty-frameShape="4"] { /* 4 = HLine */
+    border-top: 1px solid #444444;
+    margin: 20px 0;
 }
 
-/* Zone de texte (pour l'affichage des résultats d'analyse) */
+/* ===================== Zones de texte ===================== */
 QTextEdit {
-    background-color: #333333; /* Fond gris foncé pour la zone de texte */
-    border: 1px solid #555555; /* Bordure gris moyen */
+    background-color: #333333;
+    border: 1px solid #555555;
     border-radius: 5px;
     padding: 10px;
-    color: #e0e0e0; /* Texte clair */
-    selection-background-color: #bb86fc; /* Violet vif pour la sélection */
-    selection-color: white; /* Texte blanc sur fond violet sélectionné */
+    color: #e0e0e0;
+    selection-background-color: #bb86fc;
+    selection-color: white;
 }
 
-/* Barres de menu et de statut */
+/* ===================== Menu et status bar ===================== */
 QMenuBar {
-    background-color: #383838; /* Gris foncé pour la barre de menu */
+    background-color: #383838;
     color: #e0e0e0;
-    border-bottom: 1px solid #444444; /* Petite séparation */
+    border-bottom: 1px solid #444444;
 }
 
 QMenuBar::item {
@@ -86,7 +85,7 @@ QMenuBar::item {
 }
 
 QMenuBar::item:selected {
-    background-color: #4a4a4a; /* Gris légèrement plus clair au survol des items */
+    background-color: #4a4a4a;
     border-radius: 3px;
 }
 
@@ -95,4 +94,71 @@ QStatusBar {
     color: #e0e0e0;
     border-top: 1px solid #444444;
 }
+
+/* ===================== QTreeWidget / QTreeView ===================== */
+QTreeWidget, QTreeView {
+    background-color: #2b2b2b;
+    color: #e0e0e0;
+    border: 1px solid #555555;
+    font-size: 13px;
+    selection-background-color: #bb86fc;
+    selection-color: white;
+    alternate-background-color: #2f2f2f; /* Ligne alternée */
+}
+
+QTreeWidget::item, QTreeView::item {
+    padding: 5px;
+}
+
+QTreeWidget::item:selected, QTreeView::item:selected {
+    background-color: #bb86fc;
+    color: #1e1e1e;
+}
+
+QTreeWidget::branch:has-children:!has-siblings:closed,
+QTreeWidget::branch:closed:has-children,
+QTreeWidget::branch:closed:has-children:!has-siblings,
+QTreeView::branch:closed:has-children {
+    border-image: none;
+    image: url(:/icons/arrow-right.png); /* tu peux mettre une icône flèche si tu veux */
+}
+
+QTreeWidget::branch:open:has-children,
+QTreeWidget::branch:open:has-children:!has-siblings,
+QTreeView::branch:open:has-children {
+    border-image: none;
+    image: url(:/icons/arrow-down.png);
+}
+
+QHeaderView::section {
+    background-color: #3a3a3a;
+    color: #e0e0e0;
+    padding: 4px;
+    border: 1px solid #444444;
+}
+
+/* ===================== ScrollBars ===================== */
+QScrollBar:vertical, QScrollBar:horizontal {
+    background-color: #2b2b2b;
+    width: 12px;
+    height: 12px;
+    margin: 0px;
+    border: 1px solid #444444;
+    border-radius: 5px;
+}
+
+QScrollBar::handle:vertical, QScrollBar::handle:horizontal {
+    background-color: #555555;
+    border-radius: 5px;
+}
+
+QScrollBar::handle:vertical:hover, QScrollBar::handle:horizontal:hover {
+    background-color: #bb86fc;
+}
+
+QScrollBar::add-line, QScrollBar::sub-line {
+    background: none;
+    border: none;
+}
+
 """
