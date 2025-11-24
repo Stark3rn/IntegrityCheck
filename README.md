@@ -35,12 +35,12 @@ python main.py
 ```
 ----
 
-## Functionnalities
+## Functionalities
 - File analysis :
     - Exact hashing (MD5, SHA1, SHA256) and fuzzy hash (SSDEEP)
-    - Entropy calculation to check compressed or ciphered files
+    - Entropy calculation to detect compressed or enciphered files
 - Yara Detection :
-    - File scanning with all the rules within the `./rules` folder
-    - Returns dictionnary corresponding to the file
+    - Scans files with all rules in the `./rules` folder
+    - Returns a dictionary mapping rule files to matching rule names
 - GUI :
-    - PyQt5 to upload and analyse easily
+    - PyQt5 to upload and analyse files easily
