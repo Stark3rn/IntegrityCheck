@@ -1,5 +1,6 @@
 # IntegrityCheck
 A project searching to analyse local files on a computer and check its integrity, detect its modifications and apply YARA rules to them.
+
 ----
 ## Prerequisites
 To use this project, the following libraries are required:
