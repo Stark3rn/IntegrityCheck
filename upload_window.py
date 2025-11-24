@@ -15,7 +15,7 @@ class UploadWindow(QtWidgets.QMainWindow):
         self.ui.upload_button.clicked.connect(self.browse_file)
         self.ui.analyse_button.clicked.connect(self.analyse_file)
 
-        self.loaded_file = None # lien du fichier a analyser
+        self.loaded_file = None # link to the file to analyse
 
         self.loading_label = QtWidgets.QLabel(self)
         self.loading_label.setGeometry(0, 0, self.width(), self.height())  
@@ -39,7 +39,7 @@ class UploadWindow(QtWidgets.QMainWindow):
             self.set_file_path(file_path)
 
     # ----------------------------------------------------------------------
-    #  BOUTON BROWSE
+    #  BROWSE BUTTON
     # ----------------------------------------------------------------------
     def browse_file(self):
         file_path, _ = QtWidgets.QFileDialog.getOpenFileName(self, "Sélectionner un fichier")
@@ -47,7 +47,7 @@ class UploadWindow(QtWidgets.QMainWindow):
             self.set_file_path(file_path)
 
     # ----------------------------------------------------------------------
-    #  AFFICHAGE DU PATH DANS L'UI
+    #  PRINT PATH IN UI
     # ----------------------------------------------------------------------
     def set_file_path(self, file_path):
         self.loaded_file = file_path
@@ -57,7 +57,7 @@ class UploadWindow(QtWidgets.QMainWindow):
         )
 
     # ----------------------------------------------------------------------
-    #  OUVERTURE FENÊTRE D'ANALYSE
+    #  OPEN ANALYSE WINDOW
     # ----------------------------------------------------------------------
     def analyse_file(self):
         if not self.loaded_file:
@@ -67,7 +67,7 @@ class UploadWindow(QtWidgets.QMainWindow):
         self.loading_label.setVisible(True)
         self.movie.start()
 
-        # Crée le thread
+        # Creates the thread
         self.thread = AnalyseThread(self.loaded_file)
         self.thread.finished_signal.connect(self.on_analysis_done)
         self.thread.error_signal.connect(self.on_analysis_error)

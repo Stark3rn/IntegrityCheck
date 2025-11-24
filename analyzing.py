@@ -1,6 +1,7 @@
 from hashes import *
 from globalinfos import *
 from entropy import *
+from yara_scan import *
 
 def format_size(size_bytes):
     if size_bytes == 0:
@@ -44,9 +45,12 @@ def get_infos(filename:str):
     maths["entropy"] = get_entropy(filename)
     maths["evaluation"] = identification(maths["entropy"])
 
+    yara = scan_file_with_yara(filename)
+
     datas["global_infos"]=global_infos
     datas["metadatas"]=metadatas
     datas["hash"]=hashes
     datas["maths"]=maths
+    datas["yara"]=yara
 
     return(datas)

@@ -45,4 +45,4 @@ class AnalyseWindow(QtWidgets.QWidget):
         if value:
             clipboard = QApplication.clipboard()
             clipboard.setText(value)
-            QtWidgets.QToolTip.showText(QtGui.QCursor.pos(), f"Copié dans le presse-papier : {value}", self.tree)
+            QtWidgets.QToolTip.showText(QtGui.QCursor.pos(), f"Copied to clipboard : {value}", self.tree)
