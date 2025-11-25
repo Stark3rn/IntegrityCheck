@@ -6,11 +6,11 @@ A project searching to analyse local files on a computer and check its integrity
 To use this project, the following libraries are required:
 ### Linux systems
 ```bash
-pip install pyssdeep six python-magic PyQt5 yara-python
+pip install pyssdeep six python-magic PyQt5 yara-python tomark
 ```
 ### Windows systems
 ```bash
-pip install pyssdeep six python-magic-bin PyQt5 yara-python
+pip install pyssdeep six python-magic-bin PyQt5 yara-python tomark
 ```
 ----
 ## Installation
