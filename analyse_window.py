@@ -1,7 +1,7 @@
 from PyQt5 import QtWidgets, QtCore, QtGui
 from PyQt5.QtWidgets import QApplication, QInputDialog, QMessageBox
 from constantes import purple_theme, DB_PATH
-from export import export_json, export_md
+from export import export_json, export_md, export_html
 import os
 from sqlite_handler import *
 
@@ -50,12 +50,21 @@ class AnalyseWindow(QtWidgets.QWidget):
         self.export_md_button.setText(_translate("AnalyseWindow", "Export to MD"))
         self.export_md_button.clicked.connect(self.export_datas_to_md)
 
+        self.export_html_button = QtWidgets.QPushButton()
+        self.export_html_button.setMinimumSize(QtCore.QSize(300, 0))
+        self.export_html_button.setMaximumSize(QtCore.QSize(400, 16777215))
+        self.export_html_button.setObjectName("export_html_button")
+        _translate = QtCore.QCoreApplication.translate
+        self.export_html_button.setText(_translate("AnalyseWindow", "Export to HTML"))
+        self.export_html_button.clicked.connect(self.export_datas_to_html)
+
 
         self.setStyleSheet(purple_theme)
 
         layout.addWidget(self.tree)
         layout.addWidget(self.export_json_button)
         layout.addWidget(self.export_md_button)
+        layout.addWidget(self.export_html_button)
         self.setLayout(layout)
 
         self.tree.itemDoubleClicked.connect(self.copy_value_to_clipboard)
@@ -95,7 +104,7 @@ class AnalyseWindow(QtWidgets.QWidget):
         if value:
             clipboard = QApplication.clipboard()
             clipboard.setText(value)
-            QtWidgets.QToolTip.showText(QtGui.QCursor.pos(), f"Copied to clipboard : {value}", self.tree)
+            QtWidgets.QToolTip.showText(QtGui.QCursor.pos(), f"Copied to clipboard : {value}", self.tree, QtCore.QRect(), 1500)
 
     def export_datas_to_json(self):
         filepath, _ = QtWidgets.QFileDialog.getSaveFileName(
@@ -138,6 +147,30 @@ class AnalyseWindow(QtWidgets.QWidget):
             filepath += ".md"
 
         result = export_md(self.infos, filepath)
+
+        if result[0] == 0:
+            QtWidgets.QMessageBox.information(self, "Success", "Exported file!")
+        else:
+            QtWidgets.QMessageBox.critical(self, "Error", f"Cannot export file : {result[1]}")
+
+    def export_datas_to_html(self):
+        filepath, _ = QtWidgets.QFileDialog.getSaveFileName(
+            self,
+            "Export HTML",
+            "",
+            "HTML File (*.html);;All Files (*)"
+        )
+
+        if not filepath:
+            QtWidgets.QMessageBox.warning(self, "Cancelled", "Export cancelled.")
+            return
+
+        print(os.path.splitext(filepath)[-1])
+
+        if not filepath.lower().endswith(".html"):
+            filepath += ".html"
+
+        result = export_html(self.infos, filepath)
 
         if result[0] == 0:
             QtWidgets.QMessageBox.information(self, "Success", "Exported file!")

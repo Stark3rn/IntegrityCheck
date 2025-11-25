@@ -162,3 +162,92 @@ QScrollBar::add-line, QScrollBar::sub-line {
 }
 
 """
+
+css_theme = """
+/* ===================== Thème Sombre et Violet pour HTML ===================== */
+
+
+body {
+    background-color: #2b2b2b;
+    color: #e0e0e0;
+    font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 20px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #bb86fc;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+p {
+    color: #e0e0e0;
+    margin: 5px 0;
+}
+
+strong {
+    color: #bb86fc;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+    background-color: #333333;
+    color: #e0e0e0;
+    font-size: 13px;
+}
+
+th, td {
+    border: 1px solid #555555;
+    padding: 8px 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #424242;
+    color: #bb86fc;
+}
+
+tr:nth-child(even) {
+    background-color: #2f2f2f;
+}
+
+tr:hover {
+    background-color: #4a4a4a;
+}
+
+footer {
+    margin-top: 30px;
+    padding: 10px;
+    text-align: center;
+    color: #e0e0e0;
+    border-top: 1px solid #444444;
+    font-style: italic;
+}
+
+code, pre {
+    background-color: #383838;
+    color: #bb86fc;
+    padding: 3px 6px;
+    border-radius: 3px;
+    font-family: "Courier New", Courier, monospace;
+}
+
+a {
+    color: #bb86fc;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Optional: scrollable tables for long content */
+table {
+    display: block;
+    overflow-x: auto;
+}
+"""
