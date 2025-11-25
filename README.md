@@ -6,11 +6,12 @@ A project searching to analyse local files on a computer and check its integrity
 To use this project, the following libraries are required:
 ### Linux systems
 ```bash
-pip install pyssdeep six python-magic PyQt5 yara-python tomark
+pip install pyssdeep six python-magic PyQt5 yara-python tomark sqlite3
 ```
+> /!\ On certain Linux systems such as Fedora, sqlite3 is already installed. You may need to remove sqlite3 statement here
 ### Windows systems
 ```bash
-pip install pyssdeep six python-magic-bin PyQt5 yara-python tomark
+pip install pyssdeep six python-magic-bin PyQt5 yara-python tomark sqlite3
 ```
 ----
 ## Installation

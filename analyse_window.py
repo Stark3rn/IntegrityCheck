@@ -1,8 +1,9 @@
 from PyQt5 import QtWidgets, QtCore, QtGui
 from PyQt5.QtWidgets import QApplication, QInputDialog, QMessageBox
-from constantes import purple_theme
+from constantes import purple_theme, DB_PATH
 from export import export_json, export_md
 import os
+from sqlite_handler import *
 
 def add_dict_to_tree(parent_item, data: dict):
     for key, value in data.items():
@@ -62,6 +63,32 @@ class AnalyseWindow(QtWidgets.QWidget):
         self.tree.resizeColumnToContents(1)
 
         self.infos = infos
+
+        init_tables(DB_PATH)
+        self.conn = open_or_create_db(DB_PATH)
+        id_scan = insert_scan(self.conn)
+        insert_global_infos(self.conn,id_scan,  infos["global_infos"]["file_name"],
+                                                infos["global_infos"]["file_size"],
+                                                infos["global_infos"]["mime_type"],
+                                                infos["global_infos"]["creation_time"],
+                                                infos["global_infos"]["modification_time"],
+                                                infos["global_infos"]["access_time"])
+        insert_metadata(self.conn,id_scan,      infos["metadatas"]["device"],
+                                                infos["metadatas"]["perms"],
+                                                infos["metadatas"]["nlinks"],
+                                                infos["metadatas"]["uid"],
+                                                infos["metadatas"]["gid"])
+        insert_hash(self.conn,id_scan,          infos["hash"]["md5_hash"],
+                                                infos["hash"]["sha1_hash"],
+                                                infos["hash"]["sha256_hash"],
+                                                infos["hash"]["ssdeep_hash"])
+        insert_math(self.conn,id_scan,          infos["maths"]["entropy"],
+                                                infos["maths"]["evaluation"])
+        for key,val in infos["yara"].items():
+            id_yara_file = insert_yara_file(self.conn,id_scan,key)
+            for yara_rule in val:
+                insert_yara_rule(self.conn,id_yara_file, yara_rule)
+        self.conn.close()
 
     def copy_value_to_clipboard(self, item, column):
         value = item.text(1)
