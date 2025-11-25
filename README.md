@@ -44,5 +44,7 @@ python main.py
 - Yara Detection :
     - Scans files with all rules in the `./rules` folder
     - Returns a dictionary mapping rule files to matching rule names
+- Exports :
+    - Can export the analysis result in JSON, MD or HTML
 - GUI :
     - PyQt5 to upload and analyse files easily
